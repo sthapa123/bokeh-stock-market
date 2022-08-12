@@ -19,12 +19,17 @@ A live visualization of more than 7000 stock prices and indicators using bokeh.
 * On-Balance Volume (aka OBV).
 
 ## To run:
+Go to https://iexcloud.io/, sign up for a free account to get the required API token.
 
-Simple, just do `bokeh serve run.py`.
+Rename `config-sample.json` to `config.json` and put the API token in the `config.json` file.
+
+Run `pip install -r requirements.txt` to install all the required python packages to run the program.
+
+Run `bokeh serve run.py`
 
 ## Some notes:
 
-Live data courtesy of [IEX](https://iextrading.com/).
+Data provided by [IEX Cloud](https://iexcloud.io/).
 
 This software is experimental, don't go around spending your savings with it.
 

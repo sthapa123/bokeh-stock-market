@@ -8,11 +8,8 @@ from bokeh.layouts import widgetbox
 from stockstats import StockDataFrame
 from bokeh.models import ColumnDataSource
 
-from visualization import plot_stock_price, plot_sma, plot_macd, plot_rsi, plot_obv, widget_symbols, widget_show_text
+from visualization import *
 
-intro_text = "Data is current, courtesy of https://iextrading.com/"
-
-warning_text = "Dropbox is slow to load, please be patience (7000+ stocks)."
 
 stock = ColumnDataSource(
     data=dict(date=[], open=[], close=[], high=[], low=[], OBV=[], SMA_5=[], SMA_10=[], SMA_50=[], SMA_100=[], macd=[],
@@ -30,7 +27,7 @@ dropdown.on_change('value', dropdown_on_change)
 def update(selected=None):
     symbol = dropdown.value
     # Test getting 6m chart
-    url = 'https://api.iextrading.com/1.0/stock/' + symbol + '/chart/6m'
+    url = IEX_API_BASE_URL + '/stock/' + symbol + '/chart/6m?token=' + IEX_AUTH_TOKEN
     response = requests.get(url)
     respon = response.json()
     data_temp = pd.DataFrame(respon)

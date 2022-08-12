@@ -1,0 +1,8 @@
+{
+	"iex_cloud_api": {
+		"base_url": "https://cloud.iexapis.com/v1",
+		"auth_token": "your api token here"
+	},
+	"description": "Data provided by IEX Cloud",
+	"warning_text": "Dropbox is slow to load, please be patience (7000+ stocks)"
+}

@@ -1,0 +1,5 @@
+bokeh==2.4.3
+numpy==1.23.1
+pandas==1.4.3
+requests==2.28.1
+stockstats==0.4.1

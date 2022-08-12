@@ -1,10 +1,21 @@
 import requests
+import json
 
 from bokeh.plotting import figure
 from bokeh.palettes import Category20
 from bokeh.models.widgets import PreText
 from bokeh.models import BooleanFilter, CDSView, BoxAnnotation, Band, Span, Select, LinearAxis, DataRange1d, Range1d
 from bokeh.models.formatters import PrintfTickFormatter, NumeralTickFormatter
+
+with open('config.json') as config_file:
+    config = json.load(config_file)
+
+intro_text = config['description']
+
+warning_text = config['warning_text']
+
+IEX_API_BASE_URL = config['iex_cloud_api']['base_url']
+IEX_AUTH_TOKEN = config['iex_cloud_api']['auth_token']
 
 WIDTH_PLOT = 1500
 
@@ -141,7 +152,7 @@ def plot_rsi(stock):
     return p
 
 
-#### On-Balance Volume (OBV)
+# On-Balance Volume (OBV)
 def plot_obv(stock):
     p = figure(x_axis_type="datetime", plot_width=WIDTH_PLOT, plot_height=200, title="On-Balance Volume (OBV)",
                tools=TOOLS, toolbar_location='above')
@@ -153,7 +164,7 @@ def plot_obv(stock):
     return p
 
 
-#### Volume line
+# Volume line
 def plot_volume(stock):
     p = figure(x_axis_type="datetime", plot_width=WIDTH_PLOT, plot_height=200, title="Volume", tools=TOOLS,
                toolbar_location='above')
@@ -162,10 +173,10 @@ def plot_volume(stock):
     return p
 
 
-#### Plot of symbols to choose TICKET
+# Plot of symbols to choose TICKET
 def widget_symbols():
     # Get all symbols
-    all_stocks_call = 'https://api.iextrading.com/1.0/ref-data/symbols'
+    all_stocks_call = IEX_API_BASE_URL + '/ref-data/symbols?token=' + IEX_AUTH_TOKEN
     response = requests.get(all_stocks_call)
     respon = response.json()
 
