@@ -76,13 +76,13 @@ def plot_sma(stock):
                title="Simple Moving Average (press the legend to hide/show lines)",
                tools=TOOLS, toolbar_location='above')
 
-    p.line(x='date', y='SMA_5', line_width=2, color=BLUE, source=stock, legend='5 days', muted_color=BLUE,
+    p.line(x='date', y='SMA_5', line_width=2, color=BLUE, source=stock, legend_label='5 days', muted_color=BLUE,
            muted_alpha=0.2)
-    p.line(x='date', y='SMA_10', line_width=2, color=ORANGE, source=stock, legend='10 days', muted_color=ORANGE,
+    p.line(x='date', y='SMA_10', line_width=2, color=ORANGE, source=stock, legend_label='10 days', muted_color=ORANGE,
            muted_alpha=0.2)
-    p.line(x='date', y='SMA_50', line_width=2, color=PURPLE, source=stock, legend='50 days', muted_color=PURPLE,
+    p.line(x='date', y='SMA_50', line_width=2, color=PURPLE, source=stock, legend_label='50 days', muted_color=PURPLE,
            muted_alpha=0.2)
-    p.line(x='date', y='SMA_100', line_width=2, color=BROWN, source=stock, legend='100 days', muted_color=BROWN,
+    p.line(x='date', y='SMA_100', line_width=2, color=BROWN, source=stock, legend_label='100 days', muted_color=BROWN,
            muted_alpha=0.2)
 
     p.legend.location = "bottom_left"
@@ -112,9 +112,9 @@ def plot_macd(stock):
     p.extra_y_ranges = {'macd': DataRange1d()}
     p.add_layout(LinearAxis(y_range_name='macd'), 'right')
 
-    p.line(x='date', y='macd', line_width=2, color=BLUE, source=stock, legend='MACD', muted_color=BLUE,
+    p.line(x='date', y='macd', line_width=2, color=BLUE, source=stock, legend_label='MACD', muted_color=BLUE,
            muted_alpha=0, y_range_name='macd')
-    p.line(x='date', y='macd_signal', line_width=2, color=BLUE_LIGHT, source=stock, legend='Signal',
+    p.line(x='date', y='macd_signal', line_width=2, color=BLUE_LIGHT, source=stock, legend_label='Signal',
            muted_color=BLUE_LIGHT, muted_alpha=0, y_range_name='macd')
 
     p.legend.location = "bottom_left"

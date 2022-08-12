@@ -1,3 +1,4 @@
+import bokeh.models
 import requests
 import numpy as np
 import pandas as pd
@@ -89,9 +90,9 @@ p_rsi.x_range = p_stock.x_range
 p_obv = plot_obv(stock)
 p_obv.x_range = p_stock.x_range
 
-elements.append(widgetbox(widget_show_text(intro_text)))
-elements.append(widgetbox(widget_show_text(warning_text)))
-elements.append(widgetbox(dropdown))
+elements.append(bokeh.models.Column(widget_show_text(intro_text)))
+elements.append(bokeh.models.Column(widget_show_text(warning_text)))
+elements.append(bokeh.models.Column(dropdown))
 elements.append(p_stock)
 elements.append(p_sma)
 elements.append(p_macd)
