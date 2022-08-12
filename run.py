@@ -1,13 +1,11 @@
-import bokeh.models
-import requests
 import numpy as np
 import pandas as pd
 
 from bokeh.io import curdoc
 from bokeh.layouts import column
-from bokeh.layouts import widgetbox
 from stockstats import StockDataFrame
 from bokeh.models import ColumnDataSource
+from bokeh.models import Column
 
 from visualization import *
 
@@ -90,9 +88,9 @@ p_rsi.x_range = p_stock.x_range
 p_obv = plot_obv(stock)
 p_obv.x_range = p_stock.x_range
 
-elements.append(bokeh.models.Column(widget_show_text(intro_text)))
-elements.append(bokeh.models.Column(widget_show_text(warning_text)))
-elements.append(bokeh.models.Column(dropdown))
+elements.append(Column(widget_show_text(intro_text)))
+elements.append(Column(widget_show_text(warning_text)))
+elements.append(Column(dropdown))
 elements.append(p_stock)
 elements.append(p_sma)
 elements.append(p_macd)
@@ -100,4 +98,4 @@ elements.append(p_rsi)
 elements.append(p_obv)
 
 curdoc().add_root(column(elements))
-curdoc().title = 'Bokeh stocks data'
+curdoc().title = 'Bokeh Stocks Data'
